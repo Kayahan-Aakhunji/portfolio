@@ -1,3 +1,57 @@
+// import { useRef } from "react";
+// import gsap from "gsap";
+// import { useGSAP } from "@gsap/react";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// const Intro = () => {
+//   const textRef = useRef();
+
+//   useGSAP(() => {
+//     if (!document.querySelector("[data-scroll-container]")) return;
+//     ScrollTrigger.refresh();
+//     ScrollTrigger.defaults({
+//       scroller: "[data-scroll-container]",
+//     });
+//     gsap.to("#loader", {
+//       y: "-100vh",
+//       delay: 0.75,
+//       duration: 0.5,
+//       ease: "power4.in",
+//     });
+//     gsap.from(textRef.current, {
+//       y: 20,
+//       opacity: 0,
+//       delay: 1.25,
+//       duration: 1,
+//       ease: "slow(0.7, 0.7, false)",
+//     });
+//   }, []);
+
+//   return (
+//     <div id="intro" data-scroll data-scroll-speed="-2.5">
+//       <div id="loader">
+//         <img src="https://res.cloudinary.com/debkxeydc/image/upload/v1752848155/icon-2_nwcjpz.jpg" />
+//       </div>
+//       <div className="text" ref={textRef}>
+//         <div>
+//           <p id="primary">
+//             kayahan
+//             <br />
+//             Aakhunji
+//           </p>
+//           <p id="secondary">A professional Web developer</p>
+//         </div>
+//         <p id="moto">
+//           where <br />
+//           Imagination and Creativity <br />
+//           Meets With <br />
+//           Creation Brilliance
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
+
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -22,23 +76,20 @@ const Intro = () => {
   }, []);
 
   return (
-    <div id="intro" data-scroll data-scroll-speed="-2.5">
+    <div id="intro">
       <div id="loader">
-        <img src="/assets/icon-2.jpg" />
+        <img src="https://res.cloudinary.com/debkxeydc/image/upload/v1752848155/icon-2_nwcjpz.jpg" />
       </div>
       <div className="text" ref={textRef}>
         <div>
           <p id="primary">
             kayahan
-            <br />
-            Aakhunji
+            <br /> Aakhunji
           </p>
           <p id="secondary">A professional Web developer</p>
         </div>
         <p id="moto">
-          where <br />
-          Imagination and Creativity <br />
-          Meets With <br />
+          where <br /> Imagination and Creativity <br /> Meets With <br />{" "}
           Creation Brilliance
         </p>
       </div>

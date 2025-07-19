@@ -1,12 +1,82 @@
+// import gsap from "gsap";
+// import { useGSAP } from "@gsap/react";
+// import Work from "./Work";
+// import { useEffect } from "react";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const Info = () => {
+//   useEffect(() => {
+//     setTimeout(() => {
+//       window.dispatchEvent(new Event("resize"));
+//     }, 200);
+//   }, []);
+
+//   useGSAP(() => {
+//     if (!document.querySelector("[data-scroll-container]")) return;
+//     ScrollTrigger.refresh();
+//     ScrollTrigger.defaults({
+//       scroller: "[data-scroll-container]",
+//     });
+
+//     gsap.from(".work", {
+//       scrollTrigger: {
+//         trigger: "#trig",
+//         start: "top 70%",
+//         end: "bottom 50%",
+//         toggleActions: "play none none reverse",
+//         scrub: 2,
+//       },
+//       y: 100,
+//       opacity: 0,
+//       stagger: 0.2,
+//       ease: "power3.out",
+//     });
+//   }, []);
+
+//   const projects = [
+//     {
+//       title: "WanderLust",
+//       webLink: "https://wanderlust-3e20.onrender.com",
+//       imgLink:
+//         "https://res.cloudinary.com/debkxeydc/image/upload/v1752848156/web-1_sy9iyh.png",
+//     },
+//     {
+//       title: "Portfolio",
+//       webLink: "#",
+//       imgLink:
+//         "https://res.cloudinary.com/debkxeydc/image/upload/v1752848156/web-2_j3b1dd.png",
+//     },
+//   ];
+
+//   return (
+//     <div id="info" data-scroll data-scroll-speed="1">
+//       <p id="tag">Here are some of my works,</p>
+//       <div id="trig"></div>
+//       <div className="works">
+//         {projects.map((project, idx) => (
+//           <Work
+//             key={idx}
+//             title={project.title}
+//             webLink={project.webLink}
+//             imgLink={project.imgLink}
+//           />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Info;
+// ✅ Updated Info.jsx with scroll-synced animations
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Work from "./Work";
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 const Info = () => {
-  const worksRef = useRef();
   useEffect(() => {
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
@@ -14,22 +84,18 @@ const Info = () => {
   }, []);
 
   useGSAP(() => {
-    ScrollTrigger.defaults({
-      scroller: "[data-scroll-container]",
-    });
-
+    gsap.registerPlugin(ScrollTrigger);
     gsap.from(".work", {
       scrollTrigger: {
         trigger: "#trig",
         start: "top 70%",
-        end: "bottom 50%",
-        toggleActions: "play none none reverse",
-        scrub: 2,
+        end: "bottom 30%",
+        scrub: 1,
+        ease: "power3.out",
       },
       y: 100,
       opacity: 0,
-      stagger: 0.2,
-      ease: "power3.out",
+      stagger: 0.5,
     });
   }, []);
 
@@ -37,20 +103,22 @@ const Info = () => {
     {
       title: "WanderLust",
       webLink: "https://wanderlust-3e20.onrender.com",
-      imgLink: "/assets/web-1.png",
+      imgLink:
+        "https://res.cloudinary.com/debkxeydc/image/upload/v1752848156/web-1_sy9iyh.png",
     },
     {
       title: "Portfolio",
-      webLink: "#",
-      imgLink: "/assets/web-2.png",
+      webLink: "https://kayahan-aakhunji.github.io/portfolio/",
+      imgLink:
+        "https://res.cloudinary.com/debkxeydc/image/upload/v1752848156/web-2_j3b1dd.png",
     },
   ];
 
   return (
-    <div id="info" data-scroll data-scroll-speed="1">
+    <div id="info">
       <p id="tag">Here are some of my works,</p>
       <div id="trig"></div>
-      <div className="works" ref={worksRef}>
+      <div className="works">
         {projects.map((project, idx) => (
           <Work
             key={idx}
@@ -63,4 +131,5 @@ const Info = () => {
     </div>
   );
 };
+
 export default Info;
